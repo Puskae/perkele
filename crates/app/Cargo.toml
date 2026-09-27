@@ -9,7 +9,7 @@ repository.workspace = true
 [dependencies]
 perkele-shared = { workspace = true }
 dioxus = { version = "0.7", features = ["router"] }
-reqwest = { version = "0.12", default-features = false, features = ["json"] }
+reqwest = { version = "0.13", default-features = false, features = ["json"] }
 serde = { workspace = true }
 web-sys = { version = "0.3", features = [
     "Window",
