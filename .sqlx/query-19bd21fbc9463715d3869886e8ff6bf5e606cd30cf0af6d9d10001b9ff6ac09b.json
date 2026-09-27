@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT f.id AS \"id!: i64\"\n           FROM families f\n           WHERE NOT EXISTS (SELECT 1 FROM recipes r WHERE r.family_id = f.id)",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "families",
+            "name": "id"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "19bd21fbc9463715d3869886e8ff6bf5e606cd30cf0af6d9d10001b9ff6ac09b"
+}

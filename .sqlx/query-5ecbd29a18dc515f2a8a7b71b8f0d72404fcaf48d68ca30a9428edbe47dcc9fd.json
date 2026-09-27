@@ -1,0 +1,40 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT cc.completed_by AS \"user_id!: i64\",\n                  SUM(cc.points)  AS \"points!: i64\",\n                  COUNT(*)        AS \"completions!: i64\"\n           FROM chore_completions cc JOIN chores ch ON ch.id = cc.chore_id\n           WHERE ch.family_id = ? AND cc.date >= ?\n           GROUP BY cc.completed_by\n           ORDER BY SUM(cc.points) DESC, cc.completed_by",
+  "describe": {
+    "columns": [
+      {
+        "name": "user_id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "chore_completions",
+            "name": "completed_by"
+          }
+        }
+      },
+      {
+        "name": "points!: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": "Expression"
+      },
+      {
+        "name": "completions!: i64",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": "Expression"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "5ecbd29a18dc515f2a8a7b71b8f0d72404fcaf48d68ca30a9428edbe47dcc9fd"
+}

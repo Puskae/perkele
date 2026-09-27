@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO event_exdates (family_id, series_uid, occ_start)\n             VALUES (?, ?, ?) ON CONFLICT DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "3a0b6df7944c065046aead3df7ca037b891c6721a667a4db1f58ff5edaa93c8f"
+}

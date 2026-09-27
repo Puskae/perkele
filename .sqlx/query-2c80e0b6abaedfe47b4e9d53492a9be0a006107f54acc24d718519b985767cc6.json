@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO config (key, value) VALUES ('vapid_private_key', ?)\n         ON CONFLICT DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "2c80e0b6abaedfe47b4e9d53492a9be0a006107f54acc24d718519b985767cc6"
+}

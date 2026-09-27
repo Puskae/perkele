@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               name     AS \"name!: String\",\n               qty      AS \"qty?: String\",\n               unit     AS \"unit?: String\",\n               category AS \"category?: String\"\n           FROM recipe_ingredients\n           WHERE recipe_id = ?\n           ORDER BY position ASC",
+  "describe": {
+    "columns": [
+      {
+        "name": "name!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "name"
+          }
+        }
+      },
+      {
+        "name": "qty?: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "qty"
+          }
+        }
+      },
+      {
+        "name": "unit?: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "unit"
+          }
+        }
+      },
+      {
+        "name": "category?: String",
+        "ordinal": 3,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "category"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "ba4749162159ab5969421ee7e6bf9fbc30bfd4b5f3bcf5c4f84f552e7599e211"
+}

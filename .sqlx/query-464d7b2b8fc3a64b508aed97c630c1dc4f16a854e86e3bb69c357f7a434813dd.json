@@ -1,0 +1,194 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               id         AS \"id!: i64\",\n               uid        AS \"uid!: String\",\n               title      AS \"title!: String\",\n               all_day    AS \"all_day!: bool\",\n               starts_at  AS \"starts_at!: String\",\n               ends_at    AS \"ends_at!: String\",\n               location   AS \"location?: String\",\n               notes      AS \"notes?: String\",\n               rrule      AS \"rrule?: String\",\n               series_uid AS \"series_uid?: String\",\n               recurrence_id AS \"recurrence_id?: String\",\n               reminder_minutes AS \"reminder_minutes?: i64\",\n               created_by AS \"created_by!: i64\",\n               created_at AS \"created_at!: String\",\n               updated_at AS \"updated_at!: String\"\n           FROM events\n           WHERE family_id = ? AND deleted_at IS NULL\n           ORDER BY starts_at ASC",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "uid!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "uid"
+          }
+        }
+      },
+      {
+        "name": "title!: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "title"
+          }
+        }
+      },
+      {
+        "name": "all_day!: bool",
+        "ordinal": 3,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "all_day"
+          }
+        }
+      },
+      {
+        "name": "starts_at!: String",
+        "ordinal": 4,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "starts_at"
+          }
+        }
+      },
+      {
+        "name": "ends_at!: String",
+        "ordinal": 5,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "ends_at"
+          }
+        }
+      },
+      {
+        "name": "location?: String",
+        "ordinal": 6,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "location"
+          }
+        }
+      },
+      {
+        "name": "notes?: String",
+        "ordinal": 7,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "notes"
+          }
+        }
+      },
+      {
+        "name": "rrule?: String",
+        "ordinal": 8,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "rrule"
+          }
+        }
+      },
+      {
+        "name": "series_uid?: String",
+        "ordinal": 9,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "series_uid"
+          }
+        }
+      },
+      {
+        "name": "recurrence_id?: String",
+        "ordinal": 10,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "recurrence_id"
+          }
+        }
+      },
+      {
+        "name": "reminder_minutes?: i64",
+        "ordinal": 11,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "reminder_minutes"
+          }
+        }
+      },
+      {
+        "name": "created_by!: i64",
+        "ordinal": 12,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "created_by"
+          }
+        }
+      },
+      {
+        "name": "created_at!: String",
+        "ordinal": 13,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "created_at"
+          }
+        }
+      },
+      {
+        "name": "updated_at!: String",
+        "ordinal": 14,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "updated_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "464d7b2b8fc3a64b508aed97c630c1dc4f16a854e86e3bb69c357f7a434813dd"
+}

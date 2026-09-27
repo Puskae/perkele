@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               ri.name     AS \"name!: String\",\n               ri.qty      AS \"qty?: String\",\n               ri.unit     AS \"unit?: String\",\n               ri.category AS \"category?: String\"\n           FROM meal_plan_entries m\n           JOIN recipes r ON r.id = m.recipe_id AND r.deleted_at IS NULL\n           JOIN recipe_ingredients ri ON ri.recipe_id = r.id\n           WHERE m.family_id = ? AND m.date >= ? AND m.date <= ?\n           ORDER BY ri.position ASC",
+  "describe": {
+    "columns": [
+      {
+        "name": "name!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "name"
+          }
+        }
+      },
+      {
+        "name": "qty?: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "qty"
+          }
+        }
+      },
+      {
+        "name": "unit?: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "unit"
+          }
+        }
+      },
+      {
+        "name": "category?: String",
+        "ordinal": 3,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipe_ingredients",
+            "name": "category"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": [
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "553540742b3f9d8c7fd3cafa73a2ae0c73a744c299b0c47633755b13542adc2d"
+}

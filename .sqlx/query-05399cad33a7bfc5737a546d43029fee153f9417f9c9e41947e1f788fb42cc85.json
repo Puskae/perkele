@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE grocery_items SET name = ?, qty = ?, unit = ?\n         WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": []
+  },
+  "hash": "05399cad33a7bfc5737a546d43029fee153f9417f9c9e41947e1f788fb42cc85"
+}

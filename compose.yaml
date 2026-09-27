@@ -1,0 +1,67 @@
+services:
+  perkele:
+    # Two ways to get the image, both supported:
+    #   docker compose pull            → fetch the released image from GHCR
+    #   docker compose up -d --build   → build locally from source (quick fixes)
+    # `image:` names the same ref for both, so a local build overwrites the
+    # pulled tag and vice versa.
+    image: ghcr.io/puskae/perkele:latest
+    build: .
+    restart: unless-stopped
+    ports:
+      # Listen on localhost only. Tailscale is the front door:
+      #   tailscale serve --bg 8080
+      # exposes it as https://<machine>.<tailnet>.ts.net to your tailnet.
+      - "127.0.0.1:8080:8080"
+    environment:
+      # Secure cookies require HTTPS. Default true — correct when reached over
+      # HTTPS via `tailscale serve`. For plain-http access (e.g. testing at
+      # http://localhost:8080 WITHOUT tailscale serve), the browser drops the
+      # Secure session cookie and every authenticated request returns 401.
+      # Override for that case:  PERKELE_COOKIE_SECURE=false docker compose up -d
+      PERKELE_COOKIE_SECURE: "${PERKELE_COOKIE_SECURE:-true}"
+      # Error reporting to GlitchTip (Sentry protocol). Set the DSN in a .env
+      # file next to this compose.yaml on the server; unset/empty = disabled.
+      # Compose only forwards variables listed here — putting the DSN in .env
+      # alone does nothing without this line.
+      PERKELE_SENTRY_DSN: "${PERKELE_SENTRY_DSN:-}"
+      # The family's timezone. Calendar/chore times are stored as floating
+      # wall-clock and the reminder scheduler compares them against the
+      # container's LOCAL time, so this must be the family's zone or reminders
+      # fire off by the UTC offset. Defaults to the Dockerfile's Europe/Helsinki.
+      TZ: "${TZ:-Europe/Helsinki}"
+      # Where the login rate limiter reads the client's IP. This file's front
+      # door is `tailscale serve`, which sets X-Forwarded-For to the tailnet
+      # client's IP, so that is the default here. Use `cf-connecting-ip`
+      # behind a Cloudflare tunnel, `peer` when clients connect directly.
+      # See docs/deploy.md ("Client IP and rate limiting").
+      PERKELE_CLIENT_IP_SOURCE: "${PERKELE_CLIENT_IP_SOURCE:-x-forwarded-for}"
+      # Peers whose forwarded-IP header is believed. Empty = the server's
+      # default (127.0.0.1/32,::1/128,172.16.0.0/12), which covers a proxy on
+      # the host (it reaches the container via the Docker network gateway)
+      # and one in a sibling container on Docker's default address pool.
+      PERKELE_TRUSTED_PROXIES: "${PERKELE_TRUSTED_PROXIES:-}"
+      # First-run setup token. Empty = a random one is printed in
+      # `docker compose logs perkele` on every start until setup is done.
+      PERKELE_SETUP_TOKEN: "${PERKELE_SETUP_TOKEN:-}"
+    # Container hardening. The server needs no Linux capabilities (it binds
+    # 8080, a non-privileged port, as the non-root `perkele` user) and never
+    # escalates, so drop them all and forbid setuid gains.
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    # Root filesystem is read-only: the only thing the server writes is the
+    # SQLite DB and its -wal/-shm files, all under the /app/data volume below
+    # (VAPID keys etc. live in the DB). SQLite can still spill temp files
+    # (large sorts, temp indices) to /tmp, so give it a small tmpfs.
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    volumes:
+      # The database lives here (DATABASE_URL=sqlite:///app/data/perkele.db is
+      # set in the Dockerfile). A named volume = data survives rebuilds.
+      - perkele-data:/app/data
+
+volumes:
+  perkele-data:

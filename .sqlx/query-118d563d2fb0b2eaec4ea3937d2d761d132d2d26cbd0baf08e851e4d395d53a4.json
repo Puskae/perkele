@@ -1,0 +1,50 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               id      AS \"id!: i64\",\n               name    AS \"name!: String\",\n               checked AS \"checked!: bool\"\n           FROM grocery_items\n           WHERE family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "name!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "name"
+          }
+        }
+      },
+      {
+        "name": "checked!: bool",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "checked"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "118d563d2fb0b2eaec4ea3937d2d761d132d2d26cbd0baf08e851e4d395d53a4"
+}

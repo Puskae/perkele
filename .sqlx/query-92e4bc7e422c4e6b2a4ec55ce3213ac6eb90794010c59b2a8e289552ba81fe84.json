@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO families (name, created_at) VALUES (?, '2026-01-01T00:00:00Z')",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "92e4bc7e422c4e6b2a4ec55ce3213ac6eb90794010c59b2a8e289552ba81fe84"
+}

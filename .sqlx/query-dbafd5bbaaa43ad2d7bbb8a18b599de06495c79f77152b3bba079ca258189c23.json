@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO events\n            (family_id, uid, title, all_day, starts_at, ends_at, location, notes,\n             series_uid, recurrence_id, reminder_minutes, created_by, created_at, updated_at)\n         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n         ON CONFLICT(family_id, uid) DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 14
+    },
+    "nullable": []
+  },
+  "hash": "dbafd5bbaaa43ad2d7bbb8a18b599de06495c79f77152b3bba079ca258189c23"
+}

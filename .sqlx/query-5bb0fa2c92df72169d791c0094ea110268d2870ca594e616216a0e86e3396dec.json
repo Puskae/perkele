@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO note_blocks (topic_id, family_id, kind, content, checked, position)\n             VALUES (?, ?, ?, ?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 6
+    },
+    "nullable": []
+  },
+  "hash": "5bb0fa2c92df72169d791c0094ea110268d2870ca594e616216a0e86e3396dec"
+}

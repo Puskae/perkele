@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO families (name, created_at) VALUES (?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "343e7e59cad58e04b76bfc6e58d2c6421c5fa9cc271d250d5f222993342988e0"
+}

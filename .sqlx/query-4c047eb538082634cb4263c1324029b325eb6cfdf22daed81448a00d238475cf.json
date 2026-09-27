@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM chore_reminder_sends WHERE date < ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "4c047eb538082634cb4263c1324029b325eb6cfdf22daed81448a00d238475cf"
+}

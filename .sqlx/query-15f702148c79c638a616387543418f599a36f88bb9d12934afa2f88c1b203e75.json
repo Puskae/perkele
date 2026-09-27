@@ -1,0 +1,74 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT m.id           AS \"id!: i64\",\n                  m.body         AS \"body!: String\",\n                  m.author_id    AS \"author_id!: i64\",\n                  u.display_name AS \"author_name!: String\",\n                  m.created_at   AS \"created_at!: String\"\n           FROM messages m\n           JOIN users u ON u.id = m.author_id\n           WHERE m.family_id = ? AND m.deleted_at IS NULL AND m.id < ?\n           ORDER BY m.id DESC\n           LIMIT ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "messages",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "body!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "messages",
+            "name": "body"
+          }
+        }
+      },
+      {
+        "name": "author_id!: i64",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "messages",
+            "name": "author_id"
+          }
+        }
+      },
+      {
+        "name": "author_name!: String",
+        "ordinal": 3,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "users",
+            "name": "display_name"
+          }
+        }
+      },
+      {
+        "name": "created_at!: String",
+        "ordinal": 4,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "messages",
+            "name": "created_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "15f702148c79c638a616387543418f599a36f88bb9d12934afa2f88c1b203e75"
+}

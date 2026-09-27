@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO message_reactions (message_id, user_id, emoji) VALUES (?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "0a621d1fc9ae5651a3acdc0ec42ed4910f3801586807fedd0ebab3be2c4c44f4"
+}

@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               m.date      AS \"date!: String\",\n               m.recipe_id AS \"recipe_id?: i64\",\n               m.free_text AS \"free_text?: String\",\n               r.title     AS \"recipe_title?: String\"\n           FROM meal_plan_entries m\n           LEFT JOIN recipes r ON r.id = m.recipe_id AND r.deleted_at IS NULL\n           WHERE m.family_id = ? AND m.date >= ? AND m.date <= ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "date!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "meal_plan_entries",
+            "name": "date"
+          }
+        }
+      },
+      {
+        "name": "recipe_id?: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "meal_plan_entries",
+            "name": "recipe_id"
+          }
+        }
+      },
+      {
+        "name": "free_text?: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "meal_plan_entries",
+            "name": "free_text"
+          }
+        }
+      },
+      {
+        "name": "recipe_title?: String",
+        "ordinal": 3,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "title"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": [
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "18bb1d98acf4b001af61b72e57bb892a68e01acd9162bc881b2f3495d0446396"
+}

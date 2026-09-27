@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO chores (family_id, title, rrule, start_date, assigned_user_id,\n                             rotation_json, remind_at, created_by, created_at, updated_at, points)\n         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 11
+    },
+    "nullable": []
+  },
+  "hash": "59cf04a8340d045e0054c1dfb2b8523b1d0e5f49f90c41589fc4ba2c23eb7ef3"
+}

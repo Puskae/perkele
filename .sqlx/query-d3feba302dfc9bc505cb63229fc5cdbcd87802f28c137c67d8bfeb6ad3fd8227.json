@@ -1,0 +1,122 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               id         AS \"id!: i64\",\n               name       AS \"name!: String\",\n               qty        AS \"qty?: String\",\n               unit       AS \"unit?: String\",\n               category   AS \"category?: String\",\n               checked    AS \"checked!: bool\",\n               added_by   AS \"added_by!: i64\",\n               recipe_id  AS \"recipe_id?: i64\",\n               created_at AS \"created_at!: String\"\n           FROM grocery_items\n           WHERE family_id = ? AND deleted_at IS NULL\n           ORDER BY checked ASC, created_at ASC",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "name!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "name"
+          }
+        }
+      },
+      {
+        "name": "qty?: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "qty"
+          }
+        }
+      },
+      {
+        "name": "unit?: String",
+        "ordinal": 3,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "unit"
+          }
+        }
+      },
+      {
+        "name": "category?: String",
+        "ordinal": 4,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "category"
+          }
+        }
+      },
+      {
+        "name": "checked!: bool",
+        "ordinal": 5,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "checked"
+          }
+        }
+      },
+      {
+        "name": "added_by!: i64",
+        "ordinal": 6,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "added_by"
+          }
+        }
+      },
+      {
+        "name": "recipe_id?: i64",
+        "ordinal": 7,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "recipe_id"
+          }
+        }
+      },
+      {
+        "name": "created_at!: String",
+        "ordinal": 8,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "created_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true,
+      true,
+      false,
+      false,
+      true,
+      false
+    ]
+  },
+  "hash": "d3feba302dfc9bc505cb63229fc5cdbcd87802f28c137c67d8bfeb6ad3fd8227"
+}

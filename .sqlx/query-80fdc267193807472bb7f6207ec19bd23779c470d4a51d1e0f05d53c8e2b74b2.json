@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT DISTINCT created_by AS \"created_by!: i64\"\n               FROM recipes WHERE family_id = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "created_by!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "created_by"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "80fdc267193807472bb7f6207ec19bd23779c470d4a51d1e0f05d53c8e2b74b2"
+}

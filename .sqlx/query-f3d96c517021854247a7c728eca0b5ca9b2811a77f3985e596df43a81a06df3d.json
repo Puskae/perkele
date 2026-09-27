@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO recipes (family_id, title, created_by, created_at, updated_at, deleted_at)\n             VALUES (?, 'Oma resepti', ?, '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z',\n                     '2026-01-02T00:00:00Z')",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "f3d96c517021854247a7c728eca0b5ca9b2811a77f3985e596df43a81a06df3d"
+}

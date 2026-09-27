@@ -1,0 +1,74 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT\n               id       AS \"id!: i64\",\n               title    AS \"title!: String\",\n               servings AS \"servings?: i64\",\n               prep_min AS \"prep_min?: i64\",\n               cook_min AS \"cook_min?: i64\"\n           FROM recipes\n           WHERE family_id = ? AND deleted_at IS NULL\n           ORDER BY title COLLATE NOCASE ASC",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "title!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "title"
+          }
+        }
+      },
+      {
+        "name": "servings?: i64",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "servings"
+          }
+        }
+      },
+      {
+        "name": "prep_min?: i64",
+        "ordinal": 3,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "prep_min"
+          }
+        }
+      },
+      {
+        "name": "cook_min?: i64",
+        "ordinal": 4,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "recipes",
+            "name": "cook_min"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "8ca034d162ddd19f18fbcfdbb47775b8872a8fd1e960111859ff55421cd14ade"
+}

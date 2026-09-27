@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM item_favorites WHERE family_id = ? AND item_name = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "dc6d850c65c50e5533e0baee2cd2daf66f44f8ceac4e0b995fc3283fe2fe2904"
+}

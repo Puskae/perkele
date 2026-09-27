@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO item_aisles (family_id, item_name, aisle_id)\n                 VALUES (?, ?, ?)\n                 ON CONFLICT (family_id, item_name)\n                 DO UPDATE SET aisle_id = excluded.aisle_id",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "263a0137a32a7143ac82841b5a11c0b40e2e262212f157785c311c5f7cb966f5"
+}

@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT OR IGNORE INTO item_aisles (family_id, item_name, aisle_id)\n             VALUES (?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "f71b1297257b8f8a9d6765d20043803daae20113f0c9e5f40257fc9ff4263f59"
+}

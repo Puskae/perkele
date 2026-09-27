@@ -1,0 +1,50 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT r.message_id AS \"message_id!: i64\",\n                  r.user_id    AS \"user_id!: i64\",\n                  r.emoji      AS \"emoji!: String\"\n           FROM message_reactions r\n           JOIN messages m ON m.id = r.message_id\n           WHERE m.family_id = ? AND r.message_id BETWEEN ? AND ?\n           ORDER BY r.id",
+  "describe": {
+    "columns": [
+      {
+        "name": "message_id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "message_reactions",
+            "name": "message_id"
+          }
+        }
+      },
+      {
+        "name": "user_id!: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "message_reactions",
+            "name": "user_id"
+          }
+        }
+      },
+      {
+        "name": "emoji!: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "message_reactions",
+            "name": "emoji"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "de7f1cbcab5f448ff605b896cf769e8742941d548db5f535b4bf673be8c3a997"
+}

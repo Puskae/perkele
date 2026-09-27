@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="UTF-8">
+        <!-- dx fills this element's text from Dioxus.toml ([web.app] title). -->
+        <title></title>
+
+        <!-- viewport-fit=cover is what makes env(safe-area-inset-*) return real
+             values on notched phones / home-indicator devices; it must live in
+             the very first viewport meta, so it's set here in the static shell
+             rather than injected at runtime. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <!-- Safari tints the status bar / notch area from this (it can't sample the body gradient). -->
+        <meta name="theme-color" content="#11131a">
+        <link rel="icon" href="/icon-192.png" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    </head>
+    <body>
+        <div id="main"></div>
+    </body>
+</html>

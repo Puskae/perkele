@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM chore_completions WHERE chore_id = ? AND date = ? AND completed_by = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "30c9ef2e03926774518afe2c5035c51cdc8275373be8b24272d5e28f5d9ddb83"
+}

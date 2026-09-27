@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT id AS \"id!: i64\", added_by AS \"added_by!: i64\"\n           FROM grocery_items\n           WHERE family_id = ? AND category = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "added_by!: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "added_by"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "957b206c676986a41bc9186cb0e0369ff413b7950a9de13d2a0bcf1d670db772"
+}

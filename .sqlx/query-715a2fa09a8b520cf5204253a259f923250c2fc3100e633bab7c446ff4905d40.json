@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE grocery_aisles SET name = ? WHERE id = ? AND family_id = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "715a2fa09a8b520cf5204253a259f923250c2fc3100e633bab7c446ff4905d40"
+}

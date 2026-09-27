@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO chore_completions (chore_id, date, completed_by, completed_at, points)\n         VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": []
+  },
+  "hash": "bb1ebc4edf1004c0b9e5b076fdd50108371fb897183358262386baaa7b8ad217"
+}

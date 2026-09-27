@@ -1,0 +1,98 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT a.id            AS \"id!: i64\",\n                  u.display_name  AS \"actor_name!\",\n                  a.entity        AS \"entity!\",\n                  a.entity_id     AS \"entity_id?: i64\",\n                  a.op            AS \"op!\",\n                  a.label         AS \"label!\",\n                  a.created_at    AS \"created_at!\"\n           FROM audit_log a\n           JOIN users u ON u.id = a.actor_user_id\n           WHERE a.family_id = ?\n             AND a.id < ?\n             AND (? IS NULL OR a.entity = ?)\n             AND (? IS NULL OR a.actor_user_id = ?)\n           ORDER BY a.id DESC\n           LIMIT ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "actor_name!",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "users",
+            "name": "display_name"
+          }
+        }
+      },
+      {
+        "name": "entity!",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "entity"
+          }
+        }
+      },
+      {
+        "name": "entity_id?: i64",
+        "ordinal": 3,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "entity_id"
+          }
+        }
+      },
+      {
+        "name": "op!",
+        "ordinal": 4,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "op"
+          }
+        }
+      },
+      {
+        "name": "label!",
+        "ordinal": 5,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "label"
+          }
+        }
+      },
+      {
+        "name": "created_at!",
+        "ordinal": 6,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "created_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 7
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      true,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "604fcc209704fd70c81888d187d4763b824472e5f112a5e076103f369b9ada6e"
+}

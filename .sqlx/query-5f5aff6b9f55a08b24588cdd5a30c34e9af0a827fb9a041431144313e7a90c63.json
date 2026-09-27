@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT entity_id AS \"entity_id?: i64\" FROM audit_log WHERE family_id = 1",
+  "describe": {
+    "columns": [
+      {
+        "name": "entity_id?: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "entity_id"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      true
+    ]
+  },
+  "hash": "5f5aff6b9f55a08b24588cdd5a30c34e9af0a827fb9a041431144313e7a90c63"
+}

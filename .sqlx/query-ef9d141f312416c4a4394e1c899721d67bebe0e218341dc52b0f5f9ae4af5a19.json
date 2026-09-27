@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO note_topics (family_id, title, created_by, created_at, updated_at)\n         VALUES (?, ?, ?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": []
+  },
+  "hash": "ef9d141f312416c4a4394e1c899721d67bebe0e218341dc52b0f5f9ae4af5a19"
+}

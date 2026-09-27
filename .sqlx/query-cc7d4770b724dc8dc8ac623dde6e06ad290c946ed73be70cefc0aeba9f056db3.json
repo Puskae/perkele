@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT completed_by AS \"completed_by!: i64\" FROM chore_completions\n           WHERE chore_id = ? AND date = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "completed_by!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "chore_completions",
+            "name": "completed_by"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "cc7d4770b724dc8dc8ac623dde6e06ad290c946ed73be70cefc0aeba9f056db3"
+}

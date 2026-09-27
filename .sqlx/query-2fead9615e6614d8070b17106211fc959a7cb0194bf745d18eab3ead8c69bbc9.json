@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT label AS \"label!\", entity_id AS \"entity_id?: i64\"\n               FROM audit_log WHERE op = 'delete'",
+  "describe": {
+    "columns": [
+      {
+        "name": "label!",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "label"
+          }
+        }
+      },
+      {
+        "name": "entity_id?: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "audit_log",
+            "name": "entity_id"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      false,
+      true
+    ]
+  },
+  "hash": "2fead9615e6614d8070b17106211fc959a7cb0194bf745d18eab3ead8c69bbc9"
+}

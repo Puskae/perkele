@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE chores SET title = ?, rrule = ?, start_date = ?, assigned_user_id = ?,\n                           rotation_json = ?, remind_at = ?, updated_at = ?, points = COALESCE(?, points)\n         WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 10
+    },
+    "nullable": []
+  },
+  "hash": "a2d05b29fae11a43f1813dcf08aa6106d339644c1912b16254e0095464726eb1"
+}

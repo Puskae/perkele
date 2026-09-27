@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT author_id AS \"author_id!: i64\" FROM messages\n           WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "name": "author_id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "messages",
+            "name": "author_id"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "f5e3f6655527ec6fda8dcf2127cfd702df25d365b9dad313eb7cf9024b838279"
+}

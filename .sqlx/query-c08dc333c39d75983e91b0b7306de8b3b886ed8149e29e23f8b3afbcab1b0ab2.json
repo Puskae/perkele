@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO announcements (family_id, body, pinned, created_by, created_at, updated_at)\n         VALUES (?, ?, 0, ?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 5
+    },
+    "nullable": []
+  },
+  "hash": "c08dc333c39d75983e91b0b7306de8b3b886ed8149e29e23f8b3afbcab1b0ab2"
+}

@@ -1,0 +1,41 @@
+[workspace]
+resolver = "2"
+members = ["crates/shared", "crates/server", "crates/app"]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2024"
+publish = false
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/Puskae/perkele"
+
+[workspace.dependencies]
+perkele-shared = { path = "crates/shared" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+# Recurrence engine (RFC 5545 RRULE). WASM-safe: used by BOTH server and app
+# through crates/shared (Phase 5B design decision — one engine, two runtimes).
+rrule = "0.14"
+# Date math for bridging our floating "…Z" strings to rrule's DateTime types.
+# default-features = false keeps it lean; "alloc" enables parsing/formatting.
+chrono = { version = "0.4", default-features = false, features = ["alloc"] }
+# Web Push (VAPID) sender — server only; NOT WASM-safe, never in shared.
+web-push = "0.11"
+# VAPID keypair generation (same ES256 impl web-push uses internally).
+jwt-simple = { version = "0.12", default-features = false, features = ["pure-rust"] }
+sqlx = { version = "0.9", default-features = false, features = [
+    "runtime-tokio",
+    "sqlite",
+    "macros",
+    "migrate",
+    "time",
+] }
+time = { version = "0.3", features = ["serde", "formatting", "parsing"] }
+
+[profile.release]
+lto = true
+strip = true
+
+# Small WASM bundle for the web app
+[profile.release.package.perkele-app]
+opt-level = "z"

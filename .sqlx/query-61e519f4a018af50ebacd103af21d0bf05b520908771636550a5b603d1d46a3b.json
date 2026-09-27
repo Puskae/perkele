@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT token_hash AS \"t!: String\" FROM sessions",
+  "describe": {
+    "columns": [
+      {
+        "name": "t!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "sessions",
+            "name": "token_hash"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "61e519f4a018af50ebacd103af21d0bf05b520908771636550a5b603d1d46a3b"
+}

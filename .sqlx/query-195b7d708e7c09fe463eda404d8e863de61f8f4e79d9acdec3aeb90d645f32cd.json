@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM note_blocks WHERE topic_id = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "195b7d708e7c09fe463eda404d8e863de61f8f4e79d9acdec3aeb90d645f32cd"
+}

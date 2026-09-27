@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO reminder_sends (family_id, event_uid, occ_start, sent_at)\n                 VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 4
+    },
+    "nullable": []
+  },
+  "hash": "fef3a4a3dcd1201bc67f83af282be21871873944174e84521b94e8a4aacff79b"
+}

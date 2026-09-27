@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT body AS \"body!: String\" FROM announcements WHERE id = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "body!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "body"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "caee77a9d284563cfaad49249a3e13eb10c2d64cc881cb0480a169c77a79df9a"
+}

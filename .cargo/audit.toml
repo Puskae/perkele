@@ -1,0 +1,11 @@
+# cargo-audit config. Read automatically by `cargo audit` (run from the repo
+# root) and by the CI `audit` job. List here only advisories we've reviewed and
+# consciously accepted — everything else must still fail the audit.
+[advisories]
+ignore = [
+    # rsa 0.9 "Marvin" timing side-channel. No fixed release exists; the crate
+    # is only pulled in transitively and the vulnerable path isn't exercised.
+    # Revisit whenever an upgraded rsa lands upstream.
+    # https://rustsec.org/advisories/RUSTSEC-2023-0071
+    "RUSTSEC-2023-0071",
+]

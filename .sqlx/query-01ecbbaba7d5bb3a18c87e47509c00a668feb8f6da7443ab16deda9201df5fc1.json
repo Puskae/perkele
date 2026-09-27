@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO item_favorites (family_id, item_name) VALUES (?, ?)\n             ON CONFLICT (family_id, item_name) DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "01ecbbaba7d5bb3a18c87e47509c00a668feb8f6da7443ab16deda9201df5fc1"
+}

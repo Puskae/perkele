@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO chore_reminder_sends (chore_id, date, sent_at)\n                 VALUES (?, ?, ?) ON CONFLICT DO NOTHING",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "e537aa5a1bdba61b782c59297ed33805b6eed29799322df37ece23b269124140"
+}

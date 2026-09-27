@@ -1,0 +1,66 @@
+name: Docker image
+
+# Build + publish the container ONLY for tagged releases, never on ordinary
+# pushes/PRs — so this heavy release build doesn't eat Actions minutes on every
+# commit. Cut a release by pushing a version tag:
+#   git tag v0.3.0 && git push origin v0.3.0
+# (creating a GitHub Release from a new tag pushes the tag too, so that fires
+# this as well). `workflow_dispatch` lets you rebuild by hand from the Actions
+# tab without tagging.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write        # required to push to GHCR with GITHUB_TOKEN
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # Buildx gives us the BuildKit features the Dockerfile relies on
+      # (`# syntax=…`, `--mount=type=cache`) plus the GitHub Actions layer cache.
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - name: Log in to GHCR
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Derive image tags/labels from the git ref. For tag v1.2.3 this produces
+      # 1.2.3, 1.2, and (as the newest semver) latest; a manual run also gets a
+      # short-sha tag so it still publishes something identifiable.
+      - name: Image metadata
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        with:
+          images: ghcr.io/${{ github.repository }}   # lowercased automatically
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha,format=short
+          flavor: |
+            latest=auto
+
+      - name: Build and push
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # Layer cache in the Actions cache. This reuses the unchanging
+          # toolchain layers (apt, wasm target, dx download) that sit
+          # *above* `COPY . .`; the crate compile below it still runs cold each
+          # release because the Dockerfile's `--mount=type=cache` isn't exported
+          # here. Fine for infrequent tag builds — if release builds ever feel
+          # too slow, add reproducible-containers/buildkit-cache-dance to
+          # persist target/ + the cargo registry across runs.
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

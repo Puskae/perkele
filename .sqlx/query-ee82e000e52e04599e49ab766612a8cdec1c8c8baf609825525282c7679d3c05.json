@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM item_aisles WHERE family_id = ? AND item_name = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "ee82e000e52e04599e49ab766612a8cdec1c8c8baf609825525282c7679d3c05"
+}

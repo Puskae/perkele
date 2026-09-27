@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM push_subscriptions WHERE user_id = ? AND id NOT IN (\n             SELECT id FROM push_subscriptions WHERE user_id = ?\n             ORDER BY julianday(created_at) DESC, id DESC LIMIT ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "7ca258daa55f04493cadc60d1f9e3d005b514a958467cba9889ccef0de4b1db8"
+}

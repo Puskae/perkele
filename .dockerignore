@@ -1,0 +1,20 @@
+# Keep the build context small and reproducible. NOTE: .sqlx and .cargo are
+# intentionally NOT ignored — the offline sqlx build inside the image needs the
+# query cache and SQLX_OFFLINE=true from .cargo/config.toml.
+/target
+/.git
+*.db
+*.db-wal
+*.db-shm
+.env
+/dist
+.DS_Store
+*.db.bak
+*.sqlite
+.env.*
+# Local tooling / notes / docs — none of it is needed to build the image, and
+# keeping it out stops agent transcripts or private notes landing in a layer.
+.claude/
+.superpowers/
+docs/
+CLAUDE.local.md

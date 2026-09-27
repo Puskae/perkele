@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO sync_log (family_id, seq, entity, entity_id, op, updated_at)\n         VALUES (\n             ?,\n             COALESCE((SELECT MAX(seq) FROM sync_log WHERE family_id = ?), 0) + 1,\n             ?,\n             ?,\n             ?,\n             ?\n         )\n         RETURNING seq AS \"seq!: i64\"",
+  "describe": {
+    "columns": [
+      {
+        "name": "seq!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "sync_log",
+            "name": "seq"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 6
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "2fa63d2bb0cab1ca8277fb7da52148e3b68385c95bcfdc44a93055c594cdc434"
+}

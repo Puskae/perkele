@@ -1,0 +1,11 @@
+# Build against sqlx's committed offline query cache (`.sqlx/`) by default, so
+# `cargo build` works with no database and no DATABASE_URL on any machine and in
+# CI. When you add or change a `query!`/`query_as!`, regenerate the cache with:
+#
+#     SQLX_OFFLINE=false cargo sqlx prepare --workspace -- --all-targets
+#
+# (needs a migrated dev DB via DATABASE_URL; `-- --all-targets` matters because
+# some `query!` calls live in test code), then commit the updated `.sqlx/`
+# directory.
+[env]
+SQLX_OFFLINE = "true"

@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT item_name AS \"item_name!: String\"\n           FROM item_favorites WHERE family_id = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "item_name!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "item_favorites",
+            "name": "item_name"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "9065939e5b358b88b99730ed75dbd6dcfcc4fdf1aaea169093832b2f262ce4ae"
+}

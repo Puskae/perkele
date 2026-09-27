@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO meal_plan_entries\n            (family_id, date, recipe_id, free_text, created_by, created_at)\n         VALUES (?, ?, ?, ?, ?, ?)\n         ON CONFLICT(family_id, date) DO UPDATE SET\n            recipe_id = excluded.recipe_id,\n            free_text = excluded.free_text",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 6
+    },
+    "nullable": []
+  },
+  "hash": "f9e2483ce64b2d75fef8b745c3c813ba62cfb6320fc29a6bb15bdf83cf383958"
+}

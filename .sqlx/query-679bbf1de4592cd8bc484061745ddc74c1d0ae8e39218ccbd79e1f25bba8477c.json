@@ -1,0 +1,50 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT title AS \"title!: String\",\n                  created_by AS \"created_by!: i64\",\n                  updated_at AS \"updated_at!: String\"\n           FROM note_topics\n           WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "name": "title!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "note_topics",
+            "name": "title"
+          }
+        }
+      },
+      {
+        "name": "created_by!: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "note_topics",
+            "name": "created_by"
+          }
+        }
+      },
+      {
+        "name": "updated_at!: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "note_topics",
+            "name": "updated_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "679bbf1de4592cd8bc484061745ddc74c1d0ae8e39218ccbd79e1f25bba8477c"
+}

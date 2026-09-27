@@ -1,0 +1,62 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT id AS \"id!: i64\", kind AS \"kind!: String\",\n                  content AS \"content!: String\", checked AS \"checked!: i64\"\n           FROM note_blocks WHERE topic_id = ? ORDER BY position",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "note_blocks",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "kind!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "note_blocks",
+            "name": "kind"
+          }
+        }
+      },
+      {
+        "name": "content!: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "note_blocks",
+            "name": "content"
+          }
+        }
+      },
+      {
+        "name": "checked!: i64",
+        "ordinal": 3,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "note_blocks",
+            "name": "checked"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "47026013d47bbdb1aa5b8065a73dbf4eb2cf8b1d8959a85714a019b0ed4072e6"
+}

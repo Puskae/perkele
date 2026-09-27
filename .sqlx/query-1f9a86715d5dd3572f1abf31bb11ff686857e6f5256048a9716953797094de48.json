@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE events SET deleted_at = ?\n         WHERE family_id = ? AND series_uid = ? AND recurrence_id >= ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 4
+    },
+    "nullable": []
+  },
+  "hash": "1f9a86715d5dd3572f1abf31bb11ff686857e6f5256048a9716953797094de48"
+}

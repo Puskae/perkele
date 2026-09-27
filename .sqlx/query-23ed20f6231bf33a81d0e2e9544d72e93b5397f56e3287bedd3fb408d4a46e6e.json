@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM sessions WHERE julianday(expires_at) < julianday(?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "23ed20f6231bf33a81d0e2e9544d72e93b5397f56e3287bedd3fb408d4a46e6e"
+}

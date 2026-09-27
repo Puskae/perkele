@@ -1,0 +1,50 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT cc.completed_by AS \"user_id!: i64\",\n                  cc.date         AS \"date!: String\",\n                  cc.points       AS \"points!: i64\"\n           FROM chore_completions cc JOIN chores ch ON ch.id = cc.chore_id\n           WHERE ch.family_id = ? AND cc.date >= ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "user_id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "chore_completions",
+            "name": "completed_by"
+          }
+        }
+      },
+      {
+        "name": "date!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "chore_completions",
+            "name": "date"
+          }
+        }
+      },
+      {
+        "name": "points!: i64",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "chore_completions",
+            "name": "points"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "037a04cac7ea678753a52eb516ecb76c47d05cf2e5dca1d847e59773884ddcf3"
+}

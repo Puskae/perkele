@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "perkele-ui-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-lc",
+        "rm -f /tmp/pk-ui.db /tmp/pk-ui.db-wal /tmp/pk-ui.db-shm; DATABASE_URL=sqlite:///tmp/pk-ui.db PERKELE_COOKIE_SECURE=false PERKELE_DIST=$PWD/target/dx/perkele-app/release/web/public PERKELE_ADDR=127.0.0.1:8090 $HOME/.cargo/bin/cargo run -q -p perkele-server"
+      ],
+      "port": 8090
+    }
+  ]
+}

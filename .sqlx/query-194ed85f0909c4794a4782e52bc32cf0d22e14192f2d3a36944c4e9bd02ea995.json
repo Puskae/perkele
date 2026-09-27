@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO messages (family_id, author_id, body, created_at)\n         VALUES (?, ?, ?, ?)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 4
+    },
+    "nullable": []
+  },
+  "hash": "194ed85f0909c4794a4782e52bc32cf0d22e14192f2d3a36944c4e9bd02ea995"
+}

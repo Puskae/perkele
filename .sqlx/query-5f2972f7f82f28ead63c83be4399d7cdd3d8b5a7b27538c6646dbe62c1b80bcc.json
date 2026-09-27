@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE recipes\n         SET title = ?, instructions = ?, servings = ?, prep_min = ?,\n             cook_min = ?, source = ?, updated_at = ?\n         WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 9
+    },
+    "nullable": []
+  },
+  "hash": "5f2972f7f82f28ead63c83be4399d7cdd3d8b5a7b27538c6646dbe62c1b80bcc"
+}

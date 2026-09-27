@@ -1,0 +1,64 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT t.id         AS \"id!: i64\",\n                  t.title      AS \"title!: String\",\n                  t.updated_at AS \"updated_at!: String\",\n                  COALESCE(SUM(CASE WHEN b.kind = 'check' THEN 1 ELSE 0 END), 0)\n                      AS \"check_total!: i64\",\n                  COALESCE(SUM(CASE WHEN b.kind = 'check' AND b.checked = 1 THEN 1 ELSE 0 END), 0)\n                      AS \"check_done!: i64\"\n           FROM note_topics t\n           LEFT JOIN note_blocks b ON b.topic_id = t.id\n           WHERE t.family_id = ? AND t.deleted_at IS NULL\n           GROUP BY t.id\n           ORDER BY t.updated_at DESC",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "note_topics",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "title!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "note_topics",
+            "name": "title"
+          }
+        }
+      },
+      {
+        "name": "updated_at!: String",
+        "ordinal": 2,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "note_topics",
+            "name": "updated_at"
+          }
+        }
+      },
+      {
+        "name": "check_total!: i64",
+        "ordinal": 3,
+        "type_info": "Integer",
+        "origin": "Expression"
+      },
+      {
+        "name": "check_done!: i64",
+        "ordinal": 4,
+        "type_info": "Integer",
+        "origin": "Expression"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "46632dc6a424f8c3b6d8f4c0778110dd52ab9ac3f362e48537947e2ca1a78c64"
+}

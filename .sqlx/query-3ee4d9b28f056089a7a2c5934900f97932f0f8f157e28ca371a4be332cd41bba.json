@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM event_exdates\n         WHERE family_id = ? AND series_uid = ? AND occ_start >= ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "3ee4d9b28f056089a7a2c5934900f97932f0f8f157e28ca371a4be332cd41bba"
+}

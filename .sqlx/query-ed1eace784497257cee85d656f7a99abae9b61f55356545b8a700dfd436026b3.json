@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO users (id, family_id, username, display_name, pw_hash, role, created_at)\n             VALUES (?, ?, 'seeduser', 'Seed', 'x', 'admin', '2026-07-23T00:00:00Z')",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "ed1eace784497257cee85d656f7a99abae9b61f55356545b8a700dfd436026b3"
+}

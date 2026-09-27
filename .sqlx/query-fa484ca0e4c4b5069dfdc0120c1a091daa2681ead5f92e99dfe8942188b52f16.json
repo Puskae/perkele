@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE note_blocks SET checked = ?\n         WHERE id = ? AND topic_id = ? AND family_id = ? AND kind = 'check'\n           AND EXISTS (SELECT 1 FROM note_topics t\n                       WHERE t.id = note_blocks.topic_id AND t.deleted_at IS NULL)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 4
+    },
+    "nullable": []
+  },
+  "hash": "fa484ca0e4c4b5069dfdc0120c1a091daa2681ead5f92e99dfe8942188b52f16"
+}

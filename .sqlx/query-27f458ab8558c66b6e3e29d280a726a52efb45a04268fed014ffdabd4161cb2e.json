@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT item_name AS \"item_name!: String\", aisle_id AS \"aisle_id!: i64\"\n           FROM item_aisles WHERE family_id = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "item_name!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "item_aisles",
+            "name": "item_name"
+          }
+        }
+      },
+      {
+        "name": "aisle_id!: i64",
+        "ordinal": 1,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "item_aisles",
+            "name": "aisle_id"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "27f458ab8558c66b6e3e29d280a726a52efb45a04268fed014ffdabd4161cb2e"
+}

@@ -1,0 +1,21 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT COALESCE(MAX(position), 0) + 1 AS \"pos!: i64\"\n           FROM grocery_aisles WHERE family_id = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "pos!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": "Expression"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "2d7aa006c3d6409a3fcf20046afa073e94467cc7885b3e1366aac4db7385f700"
+}

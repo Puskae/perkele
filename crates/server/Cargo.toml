@@ -1,0 +1,57 @@
+[package]
+name = "perkele-server"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+perkele-shared = { workspace = true }
+axum = "0.8"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "sync"] }
+tokio-stream = { version = "0.1", features = ["sync"] }
+tower-http = { version = "0.6", features = ["fs", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+sqlx = { workspace = true }
+time = { workspace = true }
+axum-extra = { version = "0.12", features = ["cookie"] }
+serde = { workspace = true }
+argon2 = "0.5"
+# argon2 re-exports password-hash but doesn't forward its `getrandom` feature,
+# which is what provides `OsRng`. Depending on it directly with that feature
+# enables it via Cargo's feature unification.
+password-hash = { version = "0.5", features = ["getrandom"] }
+sha2 = "0.10"
+base64 = "0.22"
+hex = "0.4"
+tower_governor = "0.8"
+web-push = { workspace = true }
+# Named directly only to configure timeouts on the HTTP client web-push uses
+# (it is web-push's default transport). Keep the version in step with the one
+# web-push pulls in so Cargo unifies them into a single copy.
+isahc = "1.8"
+# Constant-time comparison for the setup token (already in the tree via
+# jwt-simple's crypto deps; this just makes it a direct dependency).
+subtle = "2.6"
+jwt-simple = { workspace = true }
+chrono = { workspace = true }
+serde_json = { workspace = true }
+# Error reporting to GlitchTip (speaks the Sentry protocol). default-features
+# off to swap native-tls for rustls — keeps the later Docker image free of
+# OpenSSL. The `tracing` feature bridges tracing::error! events into Sentry.
+sentry = { version = "0.48", default-features = false, features = [
+    "backtrace",
+    "contexts",
+    "panic",
+    "reqwest",
+    "rustls",
+    "tracing",
+] }
+
+[dev-dependencies]
+# Drive the router directly in tests (no real socket) and read response bodies.
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"
+serde_json = { workspace = true }

@@ -1,0 +1,98 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT a.id         AS \"id!: i64\",\n                  a.body       AS \"body!: String\",\n                  a.pinned     AS \"pinned!: i64\",\n                  a.created_by AS \"created_by!: i64\",\n                  u.display_name AS \"author_name!: String\",\n                  a.created_at AS \"created_at!: String\",\n                  a.updated_at AS \"updated_at!: String\"\n           FROM announcements a\n           JOIN users u ON u.id = a.created_by\n           WHERE a.family_id = ? AND a.deleted_at IS NULL\n           ORDER BY a.pinned DESC, a.created_at DESC",
+  "describe": {
+    "columns": [
+      {
+        "name": "id!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "id"
+          }
+        }
+      },
+      {
+        "name": "body!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "body"
+          }
+        }
+      },
+      {
+        "name": "pinned!: i64",
+        "ordinal": 2,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "pinned"
+          }
+        }
+      },
+      {
+        "name": "created_by!: i64",
+        "ordinal": 3,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "created_by"
+          }
+        }
+      },
+      {
+        "name": "author_name!: String",
+        "ordinal": 4,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "users",
+            "name": "display_name"
+          }
+        }
+      },
+      {
+        "name": "created_at!: String",
+        "ordinal": 5,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "created_at"
+          }
+        }
+      },
+      {
+        "name": "updated_at!: String",
+        "ordinal": 6,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "announcements",
+            "name": "updated_at"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "dec34ac258b73722bcf8d4f63a63e34edd9604690ea91c100bc57dca39ee33a1"
+}

@@ -1,0 +1,26 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT created_by AS \"created_by!: i64\" FROM events\n           WHERE family_id = ? AND uid = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "name": "created_by!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "events",
+            "name": "created_by"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "ba7d9fd4ba5b89ac1da14714bd2d936cbcb4c9f6080adacb76e4be4756bf5ebf"
+}

@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "INSERT INTO push_subscriptions (user_id, family_id, endpoint, keys_json, created_at)\n                 VALUES (1, 1, ?, ?, '2026-01-01T00:00:00Z')",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "d1d14835367ba9a2ca2d5eb1387cc67fbbda62dd61113798ae7e8952182ccb51"
+}

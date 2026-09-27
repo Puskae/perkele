@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE chores SET deleted_at = ? WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": []
+  },
+  "hash": "413f00e4f42465a7a5c6cb504d7a6333a24e5adae6e57b82ffb330dcd0b8c544"
+}

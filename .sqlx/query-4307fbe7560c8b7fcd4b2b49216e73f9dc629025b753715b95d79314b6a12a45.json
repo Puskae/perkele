@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT added_by AS \"added_by!: i64\", name AS \"name!: String\"\n           FROM grocery_items\n           WHERE id = ? AND family_id = ? AND deleted_at IS NULL",
+  "describe": {
+    "columns": [
+      {
+        "name": "added_by!: i64",
+        "ordinal": 0,
+        "type_info": "Integer",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "added_by"
+          }
+        }
+      },
+      {
+        "name": "name!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "grocery_items",
+            "name": "name"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "4307fbe7560c8b7fcd4b2b49216e73f9dc629025b753715b95d79314b6a12a45"
+}

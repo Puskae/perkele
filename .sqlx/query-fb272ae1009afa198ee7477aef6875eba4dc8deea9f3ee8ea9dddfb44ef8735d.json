@@ -1,0 +1,38 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT series_uid AS \"series_uid!: String\", occ_start AS \"occ_start!: String\"\n           FROM event_exdates WHERE family_id = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "series_uid!: String",
+        "ordinal": 0,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "event_exdates",
+            "name": "series_uid"
+          }
+        }
+      },
+      {
+        "name": "occ_start!: String",
+        "ordinal": 1,
+        "type_info": "Text",
+        "origin": {
+          "Table": {
+            "table": "event_exdates",
+            "name": "occ_start"
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false
+    ]
+  },
+  "hash": "fb272ae1009afa198ee7477aef6875eba4dc8deea9f3ee8ea9dddfb44ef8735d"
+}

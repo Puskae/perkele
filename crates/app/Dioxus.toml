@@ -1,0 +1,10 @@
+[application]
+name = "perkele-app"
+default_platform = "web"
+
+[web.app]
+title = "Perhe-elämää"
+
+# During `dx serve`, forward /api/* to the locally running perkele-server.
+[[web.proxy]]
+backend = "http://127.0.0.1:8080/api"

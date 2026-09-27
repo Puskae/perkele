@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "DELETE FROM meal_plan_entries WHERE family_id = ? AND date = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "9f29c1d431f30d6d4304cc019485e5c6f3d6678ed9b479fa7258681f5cdbda58"
+}
