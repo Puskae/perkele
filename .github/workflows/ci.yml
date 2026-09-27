@@ -17,6 +17,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # CI never runs dx, so a Dependabot bump of `dioxus` in Cargo.lock would
+      # otherwise leave the Dockerfile's pinned dx CLI behind (dx then logs
+      # "dx and dioxus versions are incompatible!" and builds anyway).
+      - name: dx matches dioxus
+        run: |
+          set -eu
+          dx=$(sed -n 's/^ARG DX_VERSION=//p' Dockerfile)
+          # The version line right after `name = "dioxus"` exactly (not
+          # dioxus-core etc.); one line per locked copy of the crate.
+          lock=$(awk 'prev == "name = \"dioxus\"" && $1 == "version" { v = $3; gsub(/"/, "", v); print v } { prev = $0 }' Cargo.lock)
+          if [ -z "$dx" ] || [ -z "$lock" ]; then
+            echo "Could not read DX_VERSION from Dockerfile ('$dx') or the dioxus version from Cargo.lock ('$lock')." >&2
+            exit 1
+          fi
+          if [ "$(printf '%s\n' "$lock" | wc -l)" -ne 1 ]; then
+            echo "Cargo.lock has more than one dioxus version: $(echo $lock) — dedupe it so DX_VERSION has one version to match." >&2
+            exit 1
+          fi
+          if [ "$dx" != "$lock" ]; then
+            echo "Dockerfile DX_VERSION=$dx but Cargo.lock has dioxus $lock — bump DX_VERSION and both DX_SHA256_* in the Dockerfile (see the comment there)." >&2
+            exit 1
+          fi
+          echo "dx $dx matches dioxus $lock"
       # Pinned to a commit on dtolnay/rust-toolchain's master branch (its README
       # requires master-history SHAs — the per-toolchain branches like `stable`
       # get rewritten and their commits garbage-collected), with the toolchain

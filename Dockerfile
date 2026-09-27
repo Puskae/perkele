@@ -28,9 +28,9 @@ RUN rustup target add wasm32-unknown-unknown
 #   curl -fsSL https://github.com/DioxusLabs/dioxus/releases/download/v<ver>/dx-x86_64-unknown-linux-gnu.sha256
 #   curl -fsSL https://github.com/DioxusLabs/dioxus/releases/download/v<ver>/dx-aarch64-unknown-linux-gnu.sha256
 ARG TARGETARCH
-ARG DX_VERSION=0.7.9
-ARG DX_SHA256_AMD64=3b132551b480bc96f938f9f0d37936ee1190f994977539dcc347eaf38540d005
-ARG DX_SHA256_ARM64=8cf14db0b11b43b31dd6d39e71b00e567f2fccfde85ae3a8f7ef0f8745e5ccfb
+ARG DX_VERSION=0.7.10
+ARG DX_SHA256_AMD64=4363e4ed2a3f1eb7f4d38d2d59aed59ce43271c44c16b425e92c89a64761fbe7
+ARG DX_SHA256_ARM64=8f1a17d3218700ffbe15e6540d936a178b2556fc801121a31082e3ba4ab9ef55
 RUN set -eu; \
     case "${TARGETARCH:-}" in \
         amd64) dx_arch=x86_64;  dx_sha="${DX_SHA256_AMD64}" ;; \
