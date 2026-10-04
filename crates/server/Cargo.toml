@@ -22,7 +22,7 @@ argon2 = "0.5"
 # argon2 re-exports password-hash but doesn't forward its `getrandom` feature,
 # which is what provides `OsRng`. Depending on it directly with that feature
 # enables it via Cargo's feature unification.
-password-hash = { version = "0.5", features = ["getrandom"] }
+password-hash = { version = "0.6", features = ["getrandom"] }
 sha2 = "0.10"
 base64 = "0.22"
 hex = "0.4"
