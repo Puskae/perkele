@@ -1,4 +1,10 @@
+# Pinned, not "stable": the Docker build installs whatever this names at build
+# time, so a floating channel let Rust 1.99.1 (2026-10-13) into the v1.0.2
+# image build, where wasm-bindgen 0.2.126 fails the bundle with "import of
+# `__wbg_cb_unref…` doesn't have an adapter listed". Bump it deliberately, and
+# run `cd crates/app && dx build --release` with the new version before
+# releasing — CI's check job never builds the bundle.
 [toolchain]
-channel = "stable"
+channel = "1.98.1"
 targets = ["wasm32-unknown-unknown"]
 components = ["rustfmt", "clippy"]
