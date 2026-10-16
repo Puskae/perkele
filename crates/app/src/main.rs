@@ -59,6 +59,16 @@ pub enum AuthState {
     LoggedIn(UserView),
 }
 
+impl AuthState {
+    /// The logged-in state for `user`, claiming this device's local cache for
+    /// them first (see `store::claim_for`). Every login path goes through
+    /// this rather than building `LoggedIn` directly.
+    pub fn logged_in(user: UserView) -> Self {
+        store::claim_for(user.id);
+        AuthState::LoggedIn(user)
+    }
+}
+
 #[component]
 fn App() -> Element {
     // Provided via context so any screen can flip the auth state (e.g. a form
@@ -77,7 +87,7 @@ fn App() -> Element {
     // Bootstrap once on load: are we logged in? if not, does setup exist yet?
     use_future(move || async move {
         match api::me().await {
-            Ok(user) => auth.set(AuthState::LoggedIn(user)),
+            Ok(user) => auth.set(AuthState::logged_in(user)),
             Err(_) => match api::setup_status().await {
                 Ok(status) if status.needs_setup => auth.set(AuthState::NeedsSetup),
                 _ => auth.set(AuthState::LoggedOut),

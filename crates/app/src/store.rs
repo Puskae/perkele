@@ -261,3 +261,38 @@ pub fn new_uid() -> String {
         .map(|c| c.random_uuid())
         .unwrap_or_else(|| format!("uid-{}", js_sys::Date::now() as u64))
 }
+
+/// Which user the cached data and offline queues on this device belong to.
+const KEY_OWNER: &str = "perkele_owner";
+
+/// Per-device preferences that aren't family data; they survive a logout.
+const KEEP_ON_LOGOUT: &[&str] = &[KEY_SORT_MODE, KEY_CAL_VIEW];
+
+/// Forget everything cached for the signed-in member: list caches, the
+/// offline mutation queues and the owner marker. Called on logout so a shared
+/// device doesn't keep showing the family's data — and so a queued mutation
+/// can't replay later under whoever logs in next.
+pub fn clear_session_data() {
+    let Some(s) = storage() else { return };
+    let len = s.length().unwrap_or(0);
+    // Collect first: removing while indexing would shift the keys.
+    let doomed: Vec<String> = (0..len)
+        .filter_map(|i| s.key(i).ok().flatten())
+        .filter(|k| k.starts_with("perkele_") && !KEEP_ON_LOGOUT.contains(&k.as_str()))
+        .collect();
+    for k in doomed {
+        let _ = s.remove_item(&k);
+    }
+}
+
+/// Mark this device's cache as `user_id`'s, wiping it first if it belonged to
+/// someone else (a session that expired instead of logging out). Call it
+/// *before* switching to the logged-in state, so no screen paints from — or
+/// replays — the previous member's cache. A cache with no owner predates this
+/// marker and is kept.
+pub fn claim_for(user_id: i64) {
+    if read::<i64>(KEY_OWNER).is_some_and(|owner| owner != user_id) {
+        clear_session_data();
+    }
+    write(KEY_OWNER, &user_id);
+}

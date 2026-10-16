@@ -59,7 +59,7 @@ pub fn SetupScreen() -> Element {
         };
         spawn(async move {
             match api::setup(req).await {
-                Ok(user) => auth.set(AuthState::LoggedIn(user)),
+                Ok(user) => auth.set(AuthState::logged_in(user)),
                 Err(e) => {
                     error.set(Some(e));
                     busy.set(false);
@@ -154,7 +154,7 @@ fn LoginForm(tab: Signal<AuthTab>) -> Element {
         };
         spawn(async move {
             match api::login(req).await {
-                Ok(user) => auth.set(AuthState::LoggedIn(user)),
+                Ok(user) => auth.set(AuthState::logged_in(user)),
                 Err(e) => {
                     error.set(Some(e));
                     busy.set(false);
@@ -227,7 +227,7 @@ fn RedeemForm(tab: Signal<AuthTab>) -> Element {
         };
         spawn(async move {
             match api::redeem(req).await {
-                Ok(user) => auth.set(AuthState::LoggedIn(user)),
+                Ok(user) => auth.set(AuthState::logged_in(user)),
                 Err(e) => {
                     error.set(Some(e));
                     busy.set(false);

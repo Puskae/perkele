@@ -22,7 +22,15 @@ pub fn MeScreen() -> Element {
 
     let logout = move |_| {
         spawn(async move {
+            // Push subscriptions belong to the member, not the session: left
+            // alone, this device would keep getting their reminders and
+            // announcements after logout. Drop it while the session still
+            // authorizes the server-side delete. Best effort — if that call
+            // fails, the browser-side unsubscribe still makes the push
+            // service answer 410, and the server prunes the row on next send.
+            let _ = drop_push_for_logout().await;
             let _ = api::logout().await;
+            crate::store::clear_session_data();
             auth.set(AuthState::LoggedOut);
         });
     };
@@ -93,6 +101,41 @@ async fn current_subscription() -> Result<Option<web_sys::PushSubscription>, Str
     } else {
         Some(sub.unchecked_into())
     })
+}
+
+/// Unsubscribe this device on logout. Unlike `current_subscription`, this
+/// uses `getRegistration()`, which resolves to `undefined` when no service
+/// worker is registered — `ready` would never resolve then, and logout would
+/// hang forever.
+async fn drop_push_for_logout() -> Result<(), String> {
+    let sw = web_sys::window()
+        .ok_or(PUSH_ERR)?
+        .navigator()
+        .service_worker();
+    let reg = JsFuture::from(sw.get_registration())
+        .await
+        .map_err(|_| PUSH_ERR)?;
+    if reg.is_undefined() || reg.is_null() {
+        return Ok(());
+    }
+    let reg: web_sys::ServiceWorkerRegistration = reg.unchecked_into();
+    let sub = JsFuture::from(
+        reg.push_manager()
+            .map_err(|_| PUSH_ERR)?
+            .get_subscription()
+            .map_err(|_| PUSH_ERR)?,
+    )
+    .await
+    .map_err(|_| PUSH_ERR)?;
+    if sub.is_undefined() || sub.is_null() {
+        return Ok(());
+    }
+    let sub: web_sys::PushSubscription = sub.unchecked_into();
+    let endpoint = sub.endpoint();
+    if let Ok(p) = sub.unsubscribe() {
+        let _ = JsFuture::from(p).await;
+    }
+    api::push_unsubscribe(&endpoint).await
 }
 
 /// Subscribe this browser with the server's VAPID key. If the browser is
