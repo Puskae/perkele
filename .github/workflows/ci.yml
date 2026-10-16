@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Weekly audit of main even when nothing is pushed: new RustSec advisories
+  # land against an unchanged Cargo.lock, and push-only CI let a batch of them
+  # sit unnoticed for weeks. Only the `audit` job runs on the schedule.
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
 
 # Least privilege: CI only reads the repo. Jobs that need more must ask for it.
 permissions:
@@ -14,6 +20,7 @@ env:
 
 jobs:
   check:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
